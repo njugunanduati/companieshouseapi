@@ -11,9 +11,8 @@ api_key = 's524FiN5DUfCtjGB4uglfpOsy7nBf86q9ak12KbY'
 class Index:
 
     def check_comapny_name(word):
-        print(word)
         payload = {
-            'q': word,
+            'q': word.upper(),
             'items_per_page': 100,
             'start_index': 1,
             'ts': x.timestamp()
@@ -34,9 +33,9 @@ class Index:
             return str(e)
 
     def check_online(payload):
-        url = Index.api_endpoint+'/search/companies/'
+        url = api_endpoint+'/search/companies/'
         try:
-            result = requests.get(url, data=payload, auth=(Index.api_key, ''))
+            result = requests.get(url, data=payload, auth=(api_key, ''))
             data = {"status": "Success", "message": result.text}
         except Exception as e:
             data = {"status": "Error!", "message": str(e)}

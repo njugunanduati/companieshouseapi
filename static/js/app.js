@@ -12,7 +12,7 @@ $(document).ready(function () {
         $.ajax({
             method: method,
             url: url,
-            data: { company_name: term }
+            data: { 'company_name' : term }
         })
         .done(function (data) {
             var result = JSON.parse(data);
